@@ -18,8 +18,8 @@ public class Main{
     
     public static void main (String[] args) {
 //        Main m = new Main();
-        Admin a = new Admin();
-        a.admin();
+//        Admin a = new Admin();
+        AddManager am = new AddManager();
     }
     
 }

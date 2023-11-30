@@ -1,34 +1,35 @@
 package staff;
-
 import java.awt.*;
 import java.awt.event.*;
-import java.awt.Image.*;
 import javax.swing.*;
 
 public class Staff extends JFrame {
     
-    public void staff() {
+    Staff() {
         setSize(900, 680);
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
-        
-        JPanel movie = new JPanel();
-        movie.setLayout(null);
-        add(movie);
-        movie.setBackground(Color.gray);
-        movie.setSize(new Dimension(300,680));
+    }
+    
+    public void movies() {
+        JPanel left = new JPanel();
+        left.setLayout(null);
+        add(left);
+        left.setBackground(Color.GRAY);
+        left.setSize(new Dimension(300,680));
+        left.setBounds(0, 0, 300, 680);
         
         JLabel avlM = new JLabel("AVAILABLE MOVIES");
-        movie.add(avlM);
+        left.add(avlM);
         avlM.setFont(new Font("Courier",Font.BOLD,15));
         avlM.setBounds(80, 10, 150, 30);
         
         JPanel movies = new JPanel();
         movies.setLayout(null);
-        movie.add(movies);
+        left.add(movies);
         movies.setBackground(Color.LIGHT_GRAY);
         movies.setBorder(BorderFactory.createLineBorder(Color.black));
         movies.setSize(new Dimension(280,580));
@@ -83,7 +84,7 @@ public class Staff extends JFrame {
         movie6.setBounds(175, 495, 150, 30);
         
         JButton logOut = new JButton("Logout");
-        movie.add(logOut);
+        left.add(logOut);
         logOut.setBounds(75, 580, 150, 30);
         
         m1.addMouseListener(new MouseAdapter() {
@@ -143,5 +144,111 @@ public class Staff extends JFrame {
                 }
             }
         });
+    }
+    
+    public void confirmation() {
+        JPanel middle = new JPanel();
+        middle.setLayout(null);
+        add(middle);
+        middle.setBackground(Color.DARK_GRAY);
+        middle.setSize(new Dimension(300,680));
+        middle.setBounds(300, 0, 300, 680);
+        
+    }
+    
+    public void receipt() {
+        JPanel right = new JPanel();
+        right.setLayout(null);
+        add(right);
+        right.setBackground(Color.GRAY);
+        right.setSize(new Dimension(300,680));
+        right.setBounds(600, 0, 300, 680);
+        
+        JPanel resibo = new JPanel();
+        resibo.setLayout(null);
+        right.add(resibo);
+        resibo.setBackground(Color.WHITE);
+        resibo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        resibo.setSize(new Dimension(260,420));
+        resibo.setBounds(10, 90, 260, 420);
+        
+        JLabel rob1 = new JLabel("ROBINSON");
+        resibo.add(rob1);
+        rob1.setBounds(75, 10, 200, 30);
+        rob1.setFont(new Font("Ariel",Font.BOLD,20));
+        
+        JLabel rob2 = new JLabel("ROBINSON PLACE MALOLOS");
+        resibo.add(rob2);
+        rob2.setBounds(45, 30, 200, 30);
+        
+        JLabel date = new JLabel("DATE:");
+        resibo.add(date);
+        date.setBounds(10, 65, 100, 30);
+        
+        JLabel time = new JLabel("TIME:");
+        resibo.add(time);
+        time.setBounds(10, 85, 100, 30);
+        
+        JLabel cashier = new JLabel("CASHIER:");
+        resibo.add(cashier);
+        cashier.setBounds(10, 105, 100, 30);
+        
+        JLabel mTitle = new JLabel("MOVIE:");
+        resibo.add(mTitle);
+        mTitle.setFont(new Font("Ariel",Font.BOLD,15));
+        mTitle.setBounds(20, 145, 200, 30);
+        
+        JLabel seat = new JLabel("SEAT#");
+        resibo.add(seat);
+        seat.setFont(new Font("Ariel",Font.BOLD,15));
+        seat.setBounds(190, 145, 200, 30);
+        
+        JPanel square = new JPanel();
+        square.setLayout(null);
+        resibo.add(square);
+        square.setBackground(Color.WHITE);
+        square.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        square.setSize(new Dimension(220,120));
+        square.setBounds(20, 170, 220, 120);
+        
+        JLabel price = new JLabel("PRICE");
+        square.add(price);
+        price.setBounds(5, 5, 100, 30);
+        
+        JLabel ticket = new JLabel("TICKET NO.");
+        square.add(ticket);
+        ticket.setBounds(5, 25, 100, 30);
+        
+        JLabel tax1 = new JLabel("TAX");
+        square.add(tax1);
+        tax1.setBounds(5, 45, 100, 30);
+        
+        JLabel tax2 = new JLabel("TAX ULET");
+        square.add(tax2);
+        tax2.setBounds(5, 65, 100, 30);
+        
+        JLabel total = new JLabel("TOTAL");
+        square.add(total);
+        total.setBounds(5, 85, 100, 30);
+        
+        JLabel reserve = new JLabel("RESERVE SEATING");
+        resibo.add(reserve);
+        reserve.setBounds(20, 290, 150, 30);
+        
+        JLabel info = new JLabel("BUYERS INFORMATION:");
+        resibo.add(info);
+        info.setBounds(20, 310, 150, 30);
+        
+        JLabel name = new JLabel("Name:_________________________");
+        resibo.add(name);
+        name.setBounds(20, 330, 300, 30);
+        
+        JLabel address = new JLabel("Address:_______________________");
+        resibo.add(address);
+        address.setBounds(20, 350, 300, 30);
+        
+        JLabel tin = new JLabel("TIN:___________________________");
+        resibo.add(tin);
+        tin.setBounds(20, 370, 300, 30);
     }
 }

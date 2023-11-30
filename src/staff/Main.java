@@ -4,7 +4,9 @@ public class Main {
     
     public static void main(String[] args) {
         Staff s = new Staff();
-        s.staff();
+        s.movies();
+        s.confirmation();
+        s.receipt();
         }
     
 }

@@ -2,6 +2,7 @@ package staff;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.Image.*;
 import javax.swing.*;
 
 public class Staff extends JFrame {

@@ -10,12 +10,15 @@ public class MovieDescription extends JFrame implements ActionListener {
     JPanel panel2 = new JPanel();
     JPanel panel3 = new JPanel();
     JPanel panel4 = new JPanel();
+    JPanel panel5 = new JPanel();
+    JPanel panel6 = new JPanel();
     JLabel mDescription = new JLabel("MOVIE DETAILS");
     JLabel title = new JLabel("Title:");
     JLabel director = new JLabel("Director:");
     JLabel duration = new JLabel("Duration:");
     JLabel genre = new JLabel("Genre:");
     JLabel timeAvail = new JLabel("TIME AVAILABLE");
+    JLabel seatsav = new JLabel("Seats Available");
     JButton backBtn = new JButton("Back");
     JButton time1 = new JButton();
     JButton time2 = new JButton();
@@ -69,6 +72,22 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel4.add(timeAvail);
         timeAvail.setFont(new Font("Courier",Font.BOLD,13));
         timeAvail.setBounds(50, 13, 150, 25);
+        
+        panel5.setLayout(null);
+        panel3.add(panel5);
+        seatsav.setBounds(190, 10, 150, 25);
+        panel5.add(seatsav);
+        panel5.setBackground(Color.LIGHT_GRAY);
+        panel5.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel5.setSize(new Dimension(465,430));
+        panel5.setBounds(10, 65, 465, 430);
+        
+        panel6.setLayout(null);
+        panel3.add(panel6);
+        panel6.setBackground(Color.LIGHT_GRAY);
+        panel6.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel6.setSize(new Dimension(465,50));
+        panel6.setBounds(10, 500, 465, 50);
     }
     
     public void movie1() {
@@ -86,6 +105,7 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel4.add(time2);
         time2.setText("3:00 PM");
         time2.setBounds(320, 10, 100, 30);
+        
     }
     
     public void movie2() {

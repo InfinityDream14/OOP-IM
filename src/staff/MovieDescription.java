@@ -22,6 +22,10 @@ public class MovieDescription extends JFrame implements ActionListener {
     JButton backBtn = new JButton("Back");
     JButton time1 = new JButton();
     JButton time2 = new JButton();
+    JButton conf = new JButton("Proceed to Payment");
+    JButton st = new JButton();
+    ButtonGroup bg1 = new ButtonGroup();
+    JTextField jtf = new JTextField(10);
     
     MovieDescription() {
         setVisible(true);
@@ -73,7 +77,7 @@ public class MovieDescription extends JFrame implements ActionListener {
         timeAvail.setFont(new Font("Courier",Font.BOLD,13));
         timeAvail.setBounds(50, 13, 150, 25);
         
-        panel5.setLayout(null);
+        panel5.setLayout(null); //simula dito yung para sa panel ng seats
         panel3.add(panel5);
         seatsav.setBounds(190, 10, 150, 25);
         panel5.add(seatsav);
@@ -82,13 +86,53 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel5.setSize(new Dimension(465,430));
         panel5.setBounds(10, 65, 465, 430);
         
-        panel6.setLayout(null);
+        FlowLayout fl = new FlowLayout(FlowLayout.LEFT);
+        fl.setVgap(12);
+        fl.setHgap(35);
+        panel6.setLayout(fl); //para sa footer
         panel3.add(panel6);
+        JLabel not = new JLabel("Number of Tickets: ");
+        not.setFont(new Font("Courier",Font.BOLD,15));
+        JTextField jtf = new JTextField(2);
+        //jtf.setEditable(false);
+        panel6.add(not);
+        panel6.add(jtf);
         panel6.setBackground(Color.LIGHT_GRAY);
         panel6.setBorder(BorderFactory.createLineBorder(Color.black));
         panel6.setSize(new Dimension(465,50));
         panel6.setBounds(10, 500, 465, 50);
+        panel6.add(conf);
+        time1.addActionListener(this);
+        time2.addActionListener(this);
+        
+        conf.addActionListener(this);
     }
+    
+    public void seatarr(){
+        FlowLayout f = new FlowLayout(FlowLayout.LEFT);
+        JPanel sofb =new JPanel();
+        sofb.setBackground(Color.LIGHT_GRAY);
+        sofb.setBorder(BorderFactory.createLineBorder(Color.black));
+        sofb.setSize(new Dimension(435,360));
+        sofb.setBounds(15, 55, 435, 360);
+        f.setHgap(12);
+        f.setVgap(12);
+        sofb.setLayout(f);
+        panel5.add(sofb);
+        ImageIcon sicon = new ImageIcon("seat.png");
+        for(int i =1; i<41; i++){
+            st.setSize(20,10);
+            String cn="";
+            if(i>9){
+                cn = Integer.toString(i);
+            }
+            else
+                cn = "0" + Integer.toString(i);
+            st = new JButton(cn, sicon);
+            bg1.add(st);
+            sofb.add(st);
+        }
+    } //ito gumagawa ng 40 buttons
     
     public void movie1() {
         ImageIcon p1 = new ImageIcon("movie1.png");
@@ -106,6 +150,7 @@ public class MovieDescription extends JFrame implements ActionListener {
         time2.setText("3:00 PM");
         time2.setBounds(320, 10, 100, 30);
         
+        seatarr();
     }
     
     public void movie2() {
@@ -195,8 +240,20 @@ public class MovieDescription extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(backBtn.getActionCommand().equals("Back")) {
+        if(e.getActionCommand().equals("Back")) {
             setVisible(false);
+        }
+        if(e.getSource()== time1){
+            time1.setBackground(Color.WHITE);
+            time2.setBackground(null);
+        }
+        if(e.getSource()== time2){
+            time2.setBackground(Color.WHITE);
+            time1.setBackground(null);
+        }
+        if(e.getSource()==conf){
+            int count = bg1.getButtonCount();
+            
         }
     }
 }

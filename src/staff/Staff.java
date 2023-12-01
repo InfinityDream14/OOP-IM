@@ -87,6 +87,8 @@ public class Staff extends JFrame {
         left.add(logOut);
         logOut.setBounds(75, 580, 150, 30);
         
+        
+        
         m1.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -145,8 +147,8 @@ public class Staff extends JFrame {
             }
         });
     }
-    
-    public void confirmation() {
+     
+    public void ticklist() {
         JPanel middle = new JPanel();
         middle.setLayout(null);
         add(middle);
@@ -154,8 +156,46 @@ public class Staff extends JFrame {
         middle.setSize(new Dimension(300,680));
         middle.setBounds(300, 0, 300, 680);
         
+        JLabel tl = new JLabel("TICKET LIST");
+        middle.add(tl);
+        tl.setBounds(90, 0, 300, 50);
+        tl.setFont(new Font("Ariel",Font.BOLD,20));
+        tl.setForeground(Color.WHITE);
+        
+        JPanel tlist = new JPanel();
+        tlist.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+        middle.add(tlist);
+        tlist.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        tlist.setBackground(Color.WHITE);
+        tlist.setSize(new Dimension(280,530));
+        tlist.setBounds(10, 50, 280,530);
+        
+        JPanel ticketno = new JPanel();
+        ticketno.setLayout(new FlowLayout());
+        tlist.add(ticketno);
+        ticketno.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        ticketno.setBackground(Color.red);
+        ticketno.setSize(200, 100);
+        
+        
+        
+        JPanel footer = new JPanel();
+        footer.setLayout(new FlowLayout(FlowLayout.LEFT, 40,10));
+        middle.add(footer);
+        footer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        footer.setBackground(Color.WHITE);
+        footer.setSize(new Dimension(280,50));
+        footer.setBounds(10, 580, 280,50);
+        JButton clr = new JButton("CLEAR");
+        JButton ctn = new JButton("CONTINUE");
+        footer.add(clr);
+        footer.add(ctn);
+        
     }
     
+    public void inticlist(){
+        
+    }
     public void receipt() {
         JPanel right = new JPanel();
         right.setLayout(null);

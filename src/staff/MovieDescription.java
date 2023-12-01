@@ -25,7 +25,9 @@ public class MovieDescription extends JFrame implements ActionListener {
     JButton conf = new JButton("Proceed to Payment");
     JButton st = new JButton();
     ButtonGroup bg1 = new ButtonGroup();
-    JTextField jtf = new JTextField(10);
+    JTextField jtf = new JTextField(2);
+    ImageIcon sicon = new ImageIcon("seat.png");
+    public int ctr = 3;
     
     MovieDescription() {
         setVisible(true);
@@ -93,8 +95,7 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel3.add(panel6);
         JLabel not = new JLabel("Number of Tickets: ");
         not.setFont(new Font("Courier",Font.BOLD,15));
-        JTextField jtf = new JTextField(2);
-        //jtf.setEditable(false);
+        jtf.setEditable(false);
         panel6.add(not);
         panel6.add(jtf);
         panel6.setBackground(Color.LIGHT_GRAY);
@@ -119,7 +120,6 @@ public class MovieDescription extends JFrame implements ActionListener {
         f.setVgap(12);
         sofb.setLayout(f);
         panel5.add(sofb);
-        ImageIcon sicon = new ImageIcon("seat.png");
         for(int i =1; i<41; i++){
             st.setSize(20,10);
             String cn="";
@@ -131,6 +131,7 @@ public class MovieDescription extends JFrame implements ActionListener {
             st = new JButton(cn, sicon);
             bg1.add(st);
             sofb.add(st);
+            st.addActionListener(this);
         }
     } //ito gumagawa ng 40 buttons
     
@@ -168,6 +169,8 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel4.add(time2);
         time2.setText("5:30 PM");
         time2.setBounds(320, 10, 100, 30);
+        
+        seatarr();
     }
     
     public void movie3() {
@@ -185,6 +188,8 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel4.add(time2);
         time2.setText("12:30 PM");
         time2.setBounds(320, 10, 100, 30);
+        
+        seatarr();
     }
     
     public void movie4() {
@@ -202,6 +207,8 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel4.add(time2);
         time2.setText("7:00 PM");
         time2.setBounds(320, 10, 100, 30);
+        
+        seatarr();
     }
     
     public void movie5() {
@@ -219,6 +226,8 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel4.add(time2);
         time2.setText("1:30 PM");
         time2.setBounds(320, 10, 100, 30);
+        
+        seatarr();
     }
     
     public void movie6() {
@@ -236,6 +245,8 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel4.add(time2);
         time2.setText("4:00 PM");
         time2.setBounds(320, 10, 100, 30);
+        
+        seatarr();
     }
 
     @Override
@@ -253,7 +264,12 @@ public class MovieDescription extends JFrame implements ActionListener {
         }
         if(e.getSource()==conf){
             int count = bg1.getButtonCount();
-            
+            //jtf.setText(Integer.toString(count));
+            jtf.setText("3");
+            setVisible(false);
         }
+//        JButton source = (JButton)e.getSource();
+//        source.setBackground(Color.red);
+            
     }
 }

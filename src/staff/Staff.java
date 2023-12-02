@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class Staff extends JFrame {
+public class Staff extends JFrame implements ActionListener{
     
     public void mainframe() {
         setSize(900, 680);
@@ -93,6 +93,7 @@ public class Staff extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 MovieDescription md = new MovieDescription();
+                md.Moviedes();
                 md.movie1();
             }
         });
@@ -101,6 +102,7 @@ public class Staff extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 MovieDescription md = new MovieDescription();
+                md.Moviedes();
                 md.movie2();
             }
         });
@@ -109,6 +111,7 @@ public class Staff extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 MovieDescription md = new MovieDescription();
+                md.Moviedes();
                 md.movie3();
             }
         });
@@ -117,6 +120,7 @@ public class Staff extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 MovieDescription md = new MovieDescription();
+                md.Moviedes();
                 md.movie4();
             }
         });
@@ -125,6 +129,7 @@ public class Staff extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 MovieDescription md = new MovieDescription();
+                md.Moviedes();
                 md.movie5();
             }
         });
@@ -133,6 +138,7 @@ public class Staff extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 MovieDescription md = new MovieDescription();
+                md.Moviedes();
                 md.movie6();
             }
         });
@@ -149,10 +155,12 @@ public class Staff extends JFrame {
     }
     
         //declaration para sa ticket list
-        JLabel stno = new JLabel("1");
+        JLabel stno = new JLabel("0");
         JPanel tlist = new JPanel();
+        JButton get = new JButton();
         
     public void ticklist() {
+       
         JPanel middle = new JPanel();
         middle.setLayout(null);
         add(middle);
@@ -176,7 +184,7 @@ public class Staff extends JFrame {
         
         
         JPanel footer = new JPanel();
-        footer.setLayout(new FlowLayout(FlowLayout.LEFT, 40,10));
+        footer.setLayout(new FlowLayout(FlowLayout.LEFT, 14,10));
         middle.add(footer);
         footer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         //footer.setBackground(Color.WHITE);
@@ -185,34 +193,73 @@ public class Staff extends JFrame {
         footer.setBounds(10, 580, 280,50);
         JButton clr = new JButton("CLEAR");
         JButton ctn = new JButton("CONTINUE");
+        JButton shw = new JButton("LIST");
+        footer.add(shw);
         footer.add(clr);
         footer.add(ctn);
+        MovieDescription md = new MovieDescription();
         
-        ctn.addActionListener(new ActionListener() {
+        shw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(ctn.getActionCommand().equals("CONTINUE")) {
-                    Payment p = new Payment();
-                    p.paymentMethod();
+                if(ae.getSource()== shw) {
+                int i =1;
+                while(i<=md.ctr){
+                    String newn = Integer.toString(i);
+                    stno.setText(newn);
+                    inticlist(stno);
+                    i++;
+                    stno = new JLabel();
+                }
                 }
             }
         });
+        
+        clr.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(ae.getSource()== clr) {
+                    tlist.removeAll();
+                    ticklist();
+                }
+            }
+        });
+
     }
     
-    public void inticlist(JPanel jp){
-
+    public void inticlist(JLabel stno){
+        JLabel tid = new JLabel("MV202301");
+        JLabel mt = new JLabel("Parasite");
+        JLabel sn = new JLabel("S"+stno.getText());
+        JLabel am = new JLabel("249");
+        
         JPanel ticketno = new JPanel();
         ticketno.setLayout(null);
-        jp.add(ticketno);
+        tlist.add(ticketno);
         ticketno.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         ticketno.setBackground(Color.WHITE);
         ticketno.setPreferredSize(new Dimension(268, 110));
-        JLabel mid = new JLabel("MOV ID:");
-        JLabel mit = new JLabel("MOV TITLE::");
-        mid.setBounds(110, 20, 50, 20);
-        mit.setBounds(110, 35, 50, 20);
+        JLabel mid = new JLabel("Ticket ID:");
+        JLabel mit = new JLabel("MOV title:");
+        JLabel stn = new JLabel("Seat No:");
+        JLabel amt = new JLabel("Amount:");
+        mid.setBounds(110, 10, 80, 20);
+        mit.setBounds(110, 30, 80, 20);
+        stn.setBounds(110, 50, 80, 20);
+        amt.setBounds(110, 70, 80, 20);
         ticketno.add(mid);
         ticketno.add(mit);
+        ticketno.add(amt);
+        ticketno.add(stn);
+        
+        tid.setBounds(180, 10, 80, 20);
+        mt.setBounds(180, 30, 80, 20);
+        sn.setBounds(180, 50, 80, 20);
+        am.setBounds(180, 70, 80, 20);
+        ticketno.add(tid);
+        ticketno.add(mt);
+        ticketno.add(am);
+        ticketno.add(sn);
         
         JPanel numtl =new JPanel();
         ticketno.add(numtl);
@@ -223,8 +270,11 @@ public class Staff extends JFrame {
         numtl.setBounds(10, 10, 89, 89);
         stno.setFont(new Font("Ariel",Font.BOLD,80));
         stno.setForeground(Color.WHITE);
-        numtl.add(stno); 
+        numtl.add(stno);
+        
     }
+    
+    
     public void receipt() {
         JPanel right = new JPanel();
         right.setLayout(null);
@@ -319,5 +369,10 @@ public class Staff extends JFrame {
         JLabel tin = new JLabel("TIN:___________________________");
         resibo.add(tin);
         tin.setBounds(20, 370, 300, 30);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }

@@ -22,14 +22,16 @@ public class MovieDescription extends JFrame implements ActionListener {
     JButton backBtn = new JButton("Back");
     JButton time1 = new JButton();
     JButton time2 = new JButton();
-    JButton conf = new JButton("Proceed to Payment");
+    Staff stf= new Staff();
+    JButton conf = new JButton("Proceed to payment");
     JButton st = new JButton();
     ButtonGroup bg1 = new ButtonGroup();
     JTextField jtf = new JTextField(2);
     ImageIcon sicon = new ImageIcon("seat.png");
-    public int ctr = 3;
+    JRadioButton jr = new JRadioButton();
+    public int ctr =5;
     
-    MovieDescription() {
+    public void Moviedes() {
         setVisible(true);
         setSize(800, 600);
         setResizable(false);
@@ -116,23 +118,24 @@ public class MovieDescription extends JFrame implements ActionListener {
         sofb.setBorder(BorderFactory.createLineBorder(Color.black));
         sofb.setSize(new Dimension(435,360));
         sofb.setBounds(15, 55, 435, 360);
-        f.setHgap(12);
-        f.setVgap(12);
+        f.setHgap(22);
+        f.setVgap(28);
         sofb.setLayout(f);
         panel5.add(sofb);
-        for(int i =1; i<41; i++){
-            st.setSize(20,10);
+        for(int i =1; i<37; i++){
+            jr.setSize(20,10);
             String cn="";
             if(i>9){
                 cn = Integer.toString(i);
             }
             else
                 cn = "0" + Integer.toString(i);
-            st = new JButton(cn, sicon);
-            bg1.add(st);
-            sofb.add(st);
-            st.addActionListener(this);
+            jr = new JRadioButton(cn,sicon);
+            //bg1.add(jr);
+            sofb.add(jr);
+            jr.addActionListener(this);
         }
+ 
     } //ito gumagawa ng 40 buttons
     
     public void movie1() {
@@ -262,13 +265,19 @@ public class MovieDescription extends JFrame implements ActionListener {
             time2.setBackground(Color.WHITE);
             time1.setBackground(null);
         }
-        if(e.getSource()==conf){
-            int count = bg1.getButtonCount();
-            //jtf.setText(Integer.toString(count));
-            jtf.setText("3");
+        if(e.getSource()== conf){
+            String sctr = Integer.toString(ctr);
+            jtf.setText(sctr);
+            //dispose();
         }
-//        JButton source = (JButton)e.getSource();
-//        source.setBackground(Color.red);
-            
+        
+//        JRadioButton src = (JRadioButton) e.getSource();
+//        if (e.getSource() == src) {
+//            ctr++;
+//            src.setBackground(Color.cyan);
+//        }
+
     }
+        
+
 }

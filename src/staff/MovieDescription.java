@@ -29,7 +29,7 @@ public class MovieDescription extends JFrame implements ActionListener {
     JTextField jtf = new JTextField(2);
     ImageIcon sicon = new ImageIcon("seat.png");
     JRadioButton jr = new JRadioButton();
-    public int ctr = 4;
+    public int ctr =5;
     
     public void Moviedes() {
         setVisible(true);
@@ -130,8 +130,8 @@ public class MovieDescription extends JFrame implements ActionListener {
             }
             else
                 cn = "0" + Integer.toString(i);
-            jr = new JRadioButton(cn, sicon);
-            bg1.add(jr);
+            jr = new JRadioButton(cn,sicon);
+            //bg1.add(jr);
             sofb.add(jr);
             jr.addActionListener(this);
         }
@@ -268,8 +268,9 @@ public class MovieDescription extends JFrame implements ActionListener {
         if(e.getSource()== conf){
             String sctr = Integer.toString(ctr);
             jtf.setText(sctr);
-            dispose();
+            //dispose();
         }
+        
 //        JRadioButton src = (JRadioButton) e.getSource();
 //        if (e.getSource() == src) {
 //            ctr++;
@@ -277,6 +278,6 @@ public class MovieDescription extends JFrame implements ActionListener {
 //        }
 
     }
-
+        
 
 }

@@ -160,6 +160,7 @@ public class Staff extends JFrame implements ActionListener{
         JButton get = new JButton();
         
     public void ticklist() {
+       
         JPanel middle = new JPanel();
         middle.setLayout(null);
         add(middle);
@@ -219,6 +220,7 @@ public class Staff extends JFrame implements ActionListener{
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getSource()== clr) {
                     tlist.removeAll();
+                    ticklist();
                 }
             }
         });
@@ -226,6 +228,10 @@ public class Staff extends JFrame implements ActionListener{
     }
     
     public void inticlist(JLabel stno){
+        JLabel tid = new JLabel("MV202301");
+        JLabel mt = new JLabel("Parasite");
+        JLabel sn = new JLabel("S"+stno.getText());
+        JLabel am = new JLabel("249");
         
         JPanel ticketno = new JPanel();
         ticketno.setLayout(null);
@@ -245,6 +251,15 @@ public class Staff extends JFrame implements ActionListener{
         ticketno.add(mit);
         ticketno.add(amt);
         ticketno.add(stn);
+        
+        tid.setBounds(180, 10, 80, 20);
+        mt.setBounds(180, 30, 80, 20);
+        sn.setBounds(180, 50, 80, 20);
+        am.setBounds(180, 70, 80, 20);
+        ticketno.add(tid);
+        ticketno.add(mt);
+        ticketno.add(am);
+        ticketno.add(sn);
         
         JPanel numtl =new JPanel();
         ticketno.add(numtl);

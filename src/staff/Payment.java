@@ -13,7 +13,6 @@ public class Payment extends JFrame {
         setResizable(false);
         setLayout(null);
         setLocationRelativeTo(null);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
     
     public void paymentMethod() {
@@ -50,7 +49,7 @@ public class Payment extends JFrame {
         tAmount.setFont(new Font("Courier",Font.BOLD,15));
         tAmount.setBounds(30, 130, 200, 30);
         
-        JLabel t_Amount = new JLabel("P1,000");
+        JLabel t_Amount = new JLabel("996");
         panel1.add(t_Amount);
         t_Amount.setFont(new Font("Courier",Font.BOLD,15));
         t_Amount.setBounds(160, 130, 200, 30);

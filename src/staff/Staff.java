@@ -156,7 +156,7 @@ public class Staff extends JFrame implements ActionListener{
     
         //declaration para sa ticket list
         JLabel stno = new JLabel("0");
-        JPanel tlist = new JPanel();
+        final JPanel tlist = new JPanel();
         JButton get = new JButton();
         
     public void ticklist() {
@@ -174,14 +174,20 @@ public class Staff extends JFrame implements ActionListener{
         tl.setFont(new Font("Ariel",Font.BOLD,20));
         tl.setForeground(Color.WHITE);
         
-        tlist.setLayout(new FlowLayout(FlowLayout.LEFT,5,5));
         middle.add(tlist);
-        tlist.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        tlist.setOpaque(false);
+        tlist.setLayout(new FlowLayout(FlowLayout.CENTER,0,5));
+        //tlist.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         //tlist.setBackground(Color.WHITE);
-        tlist.setSize(new Dimension(280,530));
+        tlist.setPreferredSize(new Dimension(260,900));
         tlist.setBounds(10, 50, 280,530);
-        
+        JScrollPane scrollPane = new JScrollPane(tlist);
+        scrollPane.setMinimumSize(new Dimension(10, 10));
+        scrollPane.setPreferredSize(new Dimension(285,300));
+        scrollPane.setBounds(8, 50, 285, 530);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setOpaque(false);
+        middle.add(scrollPane);
         
         JPanel footer = new JPanel();
         footer.setLayout(new FlowLayout(FlowLayout.LEFT, 14,10));
@@ -204,10 +210,13 @@ public class Staff extends JFrame implements ActionListener{
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getSource()== shw) {
                 int i =1;
+                //ticklist();
+                receipt();
                 while(i<=md.ctr){
                     String newn = Integer.toString(i);
                     stno.setText(newn);
                     inticlist(stno);
+                    prntrct();
                     i++;
                     stno = new JLabel();
                 }
@@ -219,8 +228,15 @@ public class Staff extends JFrame implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getSource()== clr) {
-                    tlist.removeAll();
-                    ticklist();
+                }
+            }
+        });
+        ctn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(ctn.getActionCommand().equals("CONTINUE")) {
+                    Payment p = new Payment();
+                    p.paymentMethod();
                 }
             }
         });
@@ -238,7 +254,7 @@ public class Staff extends JFrame implements ActionListener{
         tlist.add(ticketno);
         ticketno.setBorder(BorderFactory.createLineBorder(Color.BLACK));
         ticketno.setBackground(Color.WHITE);
-        ticketno.setPreferredSize(new Dimension(268, 110));
+        ticketno.setPreferredSize(new Dimension(248, 110));
         JLabel mid = new JLabel("Ticket ID:");
         JLabel mit = new JLabel("MOV title:");
         JLabel stn = new JLabel("Seat No:");
@@ -274,22 +290,36 @@ public class Staff extends JFrame implements ActionListener{
         
     }
     
-    
-    public void receipt() {
+    public void setter(){
+        Staff f = new Staff();
+        f.ticklist();
+        f.inticlist(stno);
+    }
         JPanel right = new JPanel();
-        right.setLayout(null);
+    public void receipt() {
+        right.setLayout(new FlowLayout(FlowLayout.LEFT,0,0));
         add(right);
         right.setBackground(Color.GRAY);
-        right.setSize(new Dimension(300,680));
+        right.setPreferredSize(new Dimension(300,2975));
         right.setBounds(600, 0, 300, 680);
-        
+        JScrollPane scrollPane = new JScrollPane(right);
+        scrollPane.setMinimumSize(new Dimension(10, 10));
+        scrollPane.setPreferredSize(new Dimension(285,680));
+        scrollPane.setBounds(600, 0, 285, 680);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setOpaque(false);
+        add(scrollPane);
+    }
+    
+    public void prntrct(){
         JPanel resibo = new JPanel();
         resibo.setLayout(null);
         right.add(resibo);
         resibo.setBackground(Color.WHITE);
-        resibo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        resibo.setSize(new Dimension(260,420));
-        resibo.setBounds(10, 90, 260, 420);
+        //resibo.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        resibo.setPreferredSize(new Dimension(260,420));
+        //resibo.setBounds(10, 90, 260, 420);
         
         JLabel rob1 = new JLabel("ROBINSON");
         resibo.add(rob1);

@@ -7,7 +7,7 @@ public class Main {
         s.mainframe();
         s.ticklist();
         s.movies();
-        s.receipt();
+        //s.receipt();
         }
     
 }

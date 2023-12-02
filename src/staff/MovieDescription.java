@@ -22,14 +22,14 @@ public class MovieDescription extends JFrame implements ActionListener {
     JButton backBtn = new JButton("Back");
     JButton time1 = new JButton();
     JButton time2 = new JButton();
-    Staff stf= new Staff();
+    final Staff stf= new Staff();
     JButton conf = new JButton("Proceed to payment");
     JButton st = new JButton();
     ButtonGroup bg1 = new ButtonGroup();
     JTextField jtf = new JTextField(2);
     ImageIcon sicon = new ImageIcon("seat.png");
     JRadioButton jr = new JRadioButton();
-    public int ctr =5;
+    public int ctr =7;
     
     public void Moviedes() {
         setVisible(true);
@@ -268,7 +268,8 @@ public class MovieDescription extends JFrame implements ActionListener {
         if(e.getSource()== conf){
             String sctr = Integer.toString(ctr);
             jtf.setText(sctr);
-            //dispose();
+            stf.setter();
+            dispose();
         }
         
 //        JRadioButton src = (JRadioButton) e.getSource();

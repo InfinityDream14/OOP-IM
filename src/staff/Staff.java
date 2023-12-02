@@ -5,7 +5,7 @@ import javax.swing.*;
 
 public class Staff extends JFrame {
     
-    Staff() {
+    public void mainframe() {
         setSize(900, 680);
         setResizable(false);
         setLocationRelativeTo(null);
@@ -147,7 +147,11 @@ public class Staff extends JFrame {
             }
         });
     }
-     
+    
+        //declaration para sa ticket list
+        JLabel stno = new JLabel("1");
+        JPanel tlist = new JPanel();
+        
     public void ticklist() {
         JPanel middle = new JPanel();
         middle.setLayout(null);
@@ -162,28 +166,21 @@ public class Staff extends JFrame {
         tl.setFont(new Font("Ariel",Font.BOLD,20));
         tl.setForeground(Color.WHITE);
         
-        JPanel tlist = new JPanel();
-        tlist.setLayout(new FlowLayout(FlowLayout.LEFT,10,10));
+        tlist.setLayout(new FlowLayout(FlowLayout.LEFT,5,5));
         middle.add(tlist);
         tlist.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        tlist.setBackground(Color.WHITE);
+        tlist.setOpaque(false);
+        //tlist.setBackground(Color.WHITE);
         tlist.setSize(new Dimension(280,530));
         tlist.setBounds(10, 50, 280,530);
-        
-        JPanel ticketno = new JPanel();
-        ticketno.setLayout(new FlowLayout());
-        tlist.add(ticketno);
-        ticketno.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        ticketno.setBackground(Color.red);
-        ticketno.setSize(200, 100);
-        
         
         
         JPanel footer = new JPanel();
         footer.setLayout(new FlowLayout(FlowLayout.LEFT, 40,10));
         middle.add(footer);
         footer.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-        footer.setBackground(Color.WHITE);
+        //footer.setBackground(Color.WHITE);
+        footer.setOpaque(false);
         footer.setSize(new Dimension(280,50));
         footer.setBounds(10, 580, 280,50);
         JButton clr = new JButton("CLEAR");
@@ -191,10 +188,34 @@ public class Staff extends JFrame {
         footer.add(clr);
         footer.add(ctn);
         
+        
     }
     
-    public void inticlist(){
+    public void inticlist(JPanel jp){
+
+        JPanel ticketno = new JPanel();
+        ticketno.setLayout(null);
+        jp.add(ticketno);
+        ticketno.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        ticketno.setBackground(Color.WHITE);
+        ticketno.setPreferredSize(new Dimension(268, 110));
+        JLabel mid = new JLabel("MOV ID:");
+        JLabel mit = new JLabel("MOV TITLE::");
+        mid.setBounds(110, 20, 50, 20);
+        mit.setBounds(110, 35, 50, 20);
+        ticketno.add(mid);
+        ticketno.add(mit);
         
+        JPanel numtl =new JPanel();
+        ticketno.add(numtl);
+        numtl.setLayout(new FlowLayout(FlowLayout.CENTER,1,-7));
+        numtl.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+        numtl.setBackground(Color.BLACK);
+        numtl.setPreferredSize(new Dimension(89, 100));
+        numtl.setBounds(10, 10, 89, 89);
+        stno.setFont(new Font("Ariel",Font.BOLD,80));
+        stno.setForeground(Color.WHITE);
+        numtl.add(stno); 
     }
     public void receipt() {
         JPanel right = new JPanel();

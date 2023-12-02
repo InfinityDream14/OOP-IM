@@ -266,7 +266,6 @@ public class MovieDescription extends JFrame implements ActionListener {
             int count = bg1.getButtonCount();
             //jtf.setText(Integer.toString(count));
             jtf.setText("3");
-            setVisible(false);
         }
 //        JButton source = (JButton)e.getSource();
 //        source.setBackground(Color.red);

@@ -1,4 +1,5 @@
 package staff;
+import front.Login;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,7 +9,12 @@ public class Staff extends JFrame implements ActionListener{
         //declaration para sa ticket list
         JLabel stno = new JLabel("0");
         JPanel tlist = new JPanel();
+        JLabel id = new JLabel("1");
+        JLabel tle = new JLabel();
         public static int ctg=0;
+        public static int price=249;
+        public String tot;
+        public int total=0;
         
     public void mainframe() {
         setSize(900, 680);
@@ -100,6 +106,7 @@ public class Staff extends JFrame implements ActionListener{
                 MovieDescription md = new MovieDescription();
                 md.Moviedes();
                 md.movie1();
+                tle.setText("Parasite");
             }
         });
         
@@ -109,6 +116,7 @@ public class Staff extends JFrame implements ActionListener{
                 MovieDescription md = new MovieDescription();
                 md.Moviedes();
                 md.movie2();
+                tle.setText("Taxi Driver");
             }
         });
         
@@ -118,6 +126,7 @@ public class Staff extends JFrame implements ActionListener{
                 MovieDescription md = new MovieDescription();
                 md.Moviedes();
                 md.movie3();
+                tle.setText("Seven");
             }
         });
         
@@ -127,6 +136,7 @@ public class Staff extends JFrame implements ActionListener{
                 MovieDescription md = new MovieDescription();
                 md.Moviedes();
                 md.movie4();
+                tle.setText("Nope");
             }
         });
         
@@ -136,6 +146,7 @@ public class Staff extends JFrame implements ActionListener{
                 MovieDescription md = new MovieDescription();
                 md.Moviedes();
                 md.movie5();
+                tle.setText("Memento");
             }
         });
         
@@ -145,6 +156,7 @@ public class Staff extends JFrame implements ActionListener{
                 MovieDescription md = new MovieDescription();
                 md.Moviedes();
                 md.movie6();
+                tle.setText("Home Alone");
             }
         });
         
@@ -153,7 +165,8 @@ public class Staff extends JFrame implements ActionListener{
             public void actionPerformed(ActionEvent ae) {
                 if(logOut.getActionCommand().equals("Logout")) {
                     JOptionPane.showMessageDialog(null, "You have logged out successfully", "Logout", JOptionPane.YES_OPTION);
-                    System.exit(0);
+                    Login l = new Login();
+                    dispose();
                 }
             }
         });
@@ -215,11 +228,16 @@ public class Staff extends JFrame implements ActionListener{
                 pc();
                 while(i<=ctg){
                     String newn = Integer.toString(i);
+                    String num = Integer.toString(i);
                     stno.setText(newn);
-                    inticlist(stno);
+                    id.setText(num);
+                    inticlist(stno,id,tle);
                     i++;
                     stno = new JLabel();
+                    total += price;
+                    tot = Integer.toString(total);
                 }
+                System.out.println(tot);
                 }
             }
         });
@@ -236,12 +254,15 @@ public class Staff extends JFrame implements ActionListener{
             public void actionPerformed(ActionEvent ae) {
                 if(ctn.getActionCommand().equals("CONTINUE")) {
                     Payment p = new Payment();
-                    p.paymentMethod();
+                    p.paymentMethod(tot);
                     int i =1;
                     receipt();
                     while(i<=ctg){
+                        String newn = Integer.toString(i);
+                        stno.setText(newn);
                         prntrct();
                         i++;
+                        stno = new JLabel();
                     }
                     
                 }
@@ -250,11 +271,11 @@ public class Staff extends JFrame implements ActionListener{
 
     }
     
-    public void inticlist(JLabel stno){
-        JLabel tid = new JLabel("MV202301");
-        JLabel mt = new JLabel("Parasite");
+    public void inticlist(JLabel stno, JLabel id, JLabel tle){
+        JLabel tid = new JLabel("MV20230"+id.getText());
+        JLabel mt = new JLabel(tle.getText());
         JLabel sn = new JLabel("S"+stno.getText());
-        JLabel am = new JLabel("249");
+        JLabel am = new JLabel("₱ "+"249");
         
         JPanel ticketno = new JPanel();
         ticketno.setLayout(null);
@@ -300,7 +321,7 @@ public class Staff extends JFrame implements ActionListener{
     public void setter(){
         Staff f = new Staff();
         f.ticklist();
-        f.inticlist(stno);
+        f.inticlist(stno,id,tle);
     }
         JPanel right = new JPanel();
     public void receipt() {
@@ -345,16 +366,12 @@ public class Staff extends JFrame implements ActionListener{
         resibo.add(time);
         time.setBounds(10, 85, 100, 30);
         
-        JLabel cashier = new JLabel("CASHIER:");
-        resibo.add(cashier);
-        cashier.setBounds(10, 105, 100, 30);
-        
-        JLabel mTitle = new JLabel("MOVIE:");
+        JLabel mTitle = new JLabel(tle.getText());
         resibo.add(mTitle);
         mTitle.setFont(new Font("Ariel",Font.BOLD,15));
         mTitle.setBounds(20, 145, 200, 30);
         
-        JLabel seat = new JLabel("SEAT#");
+        JLabel seat = new JLabel("S"+stno.getText());
         resibo.add(seat);
         seat.setFont(new Font("Ariel",Font.BOLD,15));
         seat.setBounds(190, 145, 200, 30);
@@ -367,25 +384,29 @@ public class Staff extends JFrame implements ActionListener{
         square.setSize(new Dimension(220,120));
         square.setBounds(20, 170, 220, 120);
         
-        JLabel price = new JLabel("PRICE");
+        JLabel price = new JLabel("PRICE:");
         square.add(price);
-        price.setBounds(5, 5, 100, 30);
+        price.setBounds(5, 25, 100, 30);
         
-        JLabel ticket = new JLabel("TICKET NO.");
+        JLabel prc = new JLabel("₱ "+"249");
+        square.add(prc);
+        prc.setBounds(140, 25, 100, 30);
+        
+        JLabel ticket = new JLabel("TICKET ID:");
         square.add(ticket);
-        ticket.setBounds(5, 25, 100, 30);
+        ticket.setBounds(5, 45, 100, 30);
         
-        JLabel tax1 = new JLabel("TAX");
-        square.add(tax1);
-        tax1.setBounds(5, 45, 100, 30);
+        JLabel tix = new JLabel("MV20230"+id.getText());
+        square.add(tix);
+        tix.setBounds(140, 45, 100, 30);
         
-        JLabel tax2 = new JLabel("TAX ULET");
-        square.add(tax2);
-        tax2.setBounds(5, 65, 100, 30);
-        
-        JLabel total = new JLabel("TOTAL");
+        JLabel total = new JLabel("TOTAL:");
         square.add(total);
-        total.setBounds(5, 85, 100, 30);
+        total.setBounds(5, 65, 100, 30);
+        
+        JLabel ttl = new JLabel("₱ "+"249");
+        square.add(ttl);
+        ttl.setBounds(140, 65, 100, 30);
         
         JLabel reserve = new JLabel("RESERVE SEATING");
         resibo.add(reserve);

@@ -1,5 +1,6 @@
 package staff;
 
+import front.Login;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -15,7 +16,8 @@ public class Payment extends JFrame {
         setLocationRelativeTo(null);
     }
     
-    public void paymentMethod() {
+    public void paymentMethod(String tot) {
+        Staff s = new Staff();
         JPanel panel1 = new JPanel();
         add(panel1);
         panel1.setLayout(null);
@@ -34,22 +36,13 @@ public class Payment extends JFrame {
         cus_ID.setFont(new Font("Courier",Font.BOLD,15));
         cus_ID.setBounds(160, 30, 200, 30);
         
-        JLabel movTitle = new JLabel("Movie Title:");
-        panel1.add(movTitle);
-        movTitle.setFont(new Font("Courier",Font.BOLD,15));
-        movTitle.setBounds(30, 60, 200, 30);
-        
-        JLabel mov_title = new JLabel("Parasite");
-        panel1.add(mov_title);
-        mov_title.setFont(new Font("Courier",Font.BOLD,15));
-        mov_title.setBounds(160, 60, 100, 30);
-        
         JLabel tAmount = new JLabel("Total Amount:");
         panel1.add(tAmount);
         tAmount.setFont(new Font("Courier",Font.BOLD,15));
         tAmount.setBounds(30, 130, 200, 30);
         
-        JLabel t_Amount = new JLabel("₱ "+"1,743");
+        JLabel t_Amount = new JLabel();
+        t_Amount.setText("" + tot);
         panel1.add(t_Amount);
         t_Amount.setFont(new Font("Courier",Font.BOLD,15));
         t_Amount.setBounds(160, 130, 200, 30);
@@ -137,12 +130,6 @@ public class Payment extends JFrame {
     }
     
     public void card() {
-        setVisible(true);
-        setTitle("Payment Method");
-        setSize(300, 200);
-        setResizable(false);
-        setLayout(null);
-        setLocationRelativeTo(null);
         setVisible(true);
         setTitle("Payment Method");
         setSize(300, 200);

@@ -29,7 +29,7 @@ public class Payment extends JFrame {
         cusID.setFont(new Font("Courier",Font.BOLD,15));
         cusID.setBounds(30, 30, 200, 30);
         
-        JLabel cus_ID = new JLabel("1234567890");
+        JLabel cus_ID = new JLabel("CM202301");
         panel1.add(cus_ID);
         cus_ID.setFont(new Font("Courier",Font.BOLD,15));
         cus_ID.setBounds(160, 30, 200, 30);
@@ -49,7 +49,7 @@ public class Payment extends JFrame {
         tAmount.setFont(new Font("Courier",Font.BOLD,15));
         tAmount.setBounds(30, 130, 200, 30);
         
-        JLabel t_Amount = new JLabel("₱ "+"996");
+        JLabel t_Amount = new JLabel("₱ "+"1,743");
         panel1.add(t_Amount);
         t_Amount.setFont(new Font("Courier",Font.BOLD,15));
         t_Amount.setBounds(160, 130, 200, 30);
@@ -79,13 +79,13 @@ public class Payment extends JFrame {
         panel2.setBorder(BorderFactory.createLineBorder(Color.black));
         panel2.setBounds(10,360, 460, 50);
         
-        JButton clear = new JButton("CLEAR");
-        panel2.add(clear);
-        clear.setBounds(120, 10, 100, 30);
+//        JButton clear = new JButton("CLEAR");
+//        panel2.add(clear);
+//        clear.setBounds(120, 10, 100, 30);
         
         JButton finish = new JButton("FINISH");
         panel2.add(finish);
-        finish.setBounds(230, 10, 100, 30);
+        finish.setBounds(160, 10, 100, 30);
         
         card.addActionListener(new ActionListener() {
             @Override
@@ -113,6 +113,15 @@ public class Payment extends JFrame {
                 if (cash.getActionCommand().equals("CASH")) {
                     Payment p = new Payment();
                     p.cash();
+                }
+            }
+        });
+
+        finish.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (finish.getActionCommand().equals("FINISH")) {
+                    System.exit(0);
                 }
             }
         });
@@ -174,7 +183,7 @@ public class Payment extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 if(okBtn.getActionCommand().equals("OK") && card_num.getText().equals(bdo_num)) {
                     String sc = (String) card_type.getSelectedItem();
-                    int total = 996;
+                    int total = 1743;
                     int balance = 5000;
                     int sukli = balance - total;
                     JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
@@ -224,7 +233,7 @@ public class Payment extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 if(okBtn.getActionCommand().equals("OK") && wallet_num.getText().equals(gcash_num)) {
                     String sc = (String) wallet_type.getSelectedItem();
-                    int total = 996;
+                    int total = 1743;
                     int balance = 5000;
                     int sukli = balance - total;
                     JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
@@ -264,7 +273,7 @@ public class Payment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(okBtn.getActionCommand().equals("OK")) {
-                    int total = 996;
+                    int total = 1743;
                     int cash = Integer.parseInt(cash_num.getText());
                     int sukli = cash - total;
                     JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);

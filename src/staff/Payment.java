@@ -34,22 +34,22 @@ public class Payment extends JFrame {
         cus_ID.setFont(new Font("Courier",Font.BOLD,15));
         cus_ID.setBounds(160, 30, 200, 30);
         
-        JLabel cusName = new JLabel("Customer Name:");
-        panel1.add(cusName);
-        cusName.setFont(new Font("Courier",Font.BOLD,15));
-        cusName.setBounds(30, 60, 200, 30);
+        JLabel movTitle = new JLabel("Movie Title:");
+        panel1.add(movTitle);
+        movTitle.setFont(new Font("Courier",Font.BOLD,15));
+        movTitle.setBounds(30, 60, 200, 30);
         
-        JTextField cus_Name = new JTextField(20);
-        panel1.add(cus_Name);
-        cus_Name.setFont(new Font("Courier",Font.BOLD,15));
-        cus_Name.setBounds(160, 60, 100, 30);
+        JLabel mov_title = new JLabel("Parasite");
+        panel1.add(mov_title);
+        mov_title.setFont(new Font("Courier",Font.BOLD,15));
+        mov_title.setBounds(160, 60, 100, 30);
         
         JLabel tAmount = new JLabel("Total Amount:");
         panel1.add(tAmount);
         tAmount.setFont(new Font("Courier",Font.BOLD,15));
         tAmount.setBounds(30, 130, 200, 30);
         
-        JLabel t_Amount = new JLabel("996");
+        JLabel t_Amount = new JLabel("₱ "+"996");
         panel1.add(t_Amount);
         t_Amount.setFont(new Font("Courier",Font.BOLD,15));
         t_Amount.setBounds(160, 130, 200, 30);
@@ -91,8 +91,8 @@ public class Payment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (card.getActionCommand().equals("CARD")) {
-                    PaymentOption po = new PaymentOption();
-                    po.card();
+                    Payment p = new Payment();
+                    p.card();
                 }
             }
         });
@@ -101,8 +101,8 @@ public class Payment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (gCash.getActionCommand().equals("GCASH")) {
-                    PaymentOption po = new PaymentOption();
-                    po.gCash();
+                    Payment p = new Payment();
+                    p.gCash();
                 }
             }
         });
@@ -111,8 +111,164 @@ public class Payment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (cash.getActionCommand().equals("CASH")) {
-                    PaymentOption po = new PaymentOption();
-                    po.cash();
+                    Payment p = new Payment();
+                    p.cash();
+                }
+            }
+        });
+    }
+    
+    public void paymentoption() {
+        setVisible(true);
+        setTitle("Payment Method");
+        setSize(300, 200);
+        setResizable(false);
+        setLayout(null);
+        setLocationRelativeTo(null);
+    }
+    
+    public void card() {
+        setVisible(true);
+        setTitle("Payment Method");
+        setSize(300, 200);
+        setResizable(false);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
+        setTitle("Payment Method");
+        setSize(300, 200);
+        setResizable(false);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        JPanel panel1 = new JPanel();
+        add(panel1);
+        panel1.setLayout(null);
+        panel1.setSize(new Dimension(260,160));
+        panel1.setBackground(Color.WHITE);
+        panel1.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel1.setBounds(10,20, 260, 120);
+        
+        JLabel cardType = new JLabel("Card Type");
+        cardType.setBounds(35,10, 100, 30);
+        panel1.add(cardType);
+        String card[] = {"BDO", "Master Card", "Land Bank", "Visa Card"}; 
+        JComboBox card_type = new JComboBox(card);
+        panel1.add(card_type);
+        card_type.setBounds(100,15, 140, 25);
+        
+        JLabel cardNum = new JLabel("Card Number");
+        cardNum.setBounds(15,40, 100, 30);
+        panel1.add(cardNum);
+        JTextField card_num = new JTextField(15);
+        panel1.add(card_num);
+        card_num.setBounds(100,45, 140, 25);
+        
+        JButton okBtn = new JButton("OK");
+        panel1.add(okBtn);
+        okBtn.setBounds(75,80, 100, 25);
+        
+        String bdo_num = "012-345-012";
+        
+        okBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(okBtn.getActionCommand().equals("OK") && card_num.getText().equals(bdo_num)) {
+                    String sc = (String) card_type.getSelectedItem();
+                    int total = 996;
+                    int balance = 5000;
+                    int sukli = balance - total;
+                    JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
+                    setVisible(false);
+                }
+            }
+        });
+    }
+    
+    public void gCash() {
+        setVisible(true);
+        setTitle("Payment Method");
+        setSize(300, 200);
+        setResizable(false);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        JPanel panel1 = new JPanel();
+        add(panel1);
+        panel1.setLayout(null);
+        panel1.setSize(new Dimension(200,120));
+        panel1.setBackground(Color.WHITE);
+        panel1.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel1.setBounds(10,20, 260, 120);
+        
+        JLabel walletType = new JLabel("E-Wallet Type");
+        walletType.setBounds(15,10, 100, 30);
+        panel1.add(walletType);
+        String wallet[] = {"Gcash", "Paypal", "Maya", "Pioneer"}; 
+        JComboBox wallet_type = new JComboBox(wallet);
+        panel1.add(wallet_type);
+        wallet_type.setBounds(100,15, 140, 25);
+        
+        JLabel num = new JLabel("Number");
+        num.setBounds(45,40, 100, 30);
+        panel1.add(num);
+        JTextField wallet_num = new JTextField(15);
+        panel1.add(wallet_num);
+        wallet_num.setBounds(100,45, 140, 25);
+        
+        JButton okBtn = new JButton("OK");
+        panel1.add(okBtn);
+        okBtn.setBounds(75,80, 100, 25);
+        
+        String gcash_num = "09100319025";
+        okBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(okBtn.getActionCommand().equals("OK") && wallet_num.getText().equals(gcash_num)) {
+                    String sc = (String) wallet_type.getSelectedItem();
+                    int total = 996;
+                    int balance = 5000;
+                    int sukli = balance - total;
+                    JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
+                    setVisible(false);
+                }
+            }
+        });
+    }
+    
+    public void cash() {
+        setVisible(true);
+        setTitle("Payment Method");
+        setSize(300, 200);
+        setResizable(false);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        JPanel panel1 = new JPanel();
+        add(panel1);
+        panel1.setLayout(null);
+        panel1.setSize(new Dimension(180,150));
+        panel1.setBackground(Color.WHITE);
+        panel1.setBorder(BorderFactory.createLineBorder(Color.black));
+        panel1.setBounds(10,20, 260, 120);
+        
+        JLabel cNum = new JLabel("Cash Amount");
+        panel1.add(cNum);
+        cNum.setBounds(40,20, 95, 50);
+        JTextField cash_num = new JTextField(20);
+        panel1.add(cash_num);
+        cash_num.setBounds(120,32, 100, 25);
+        
+        JButton okBtn = new JButton("OK");
+        panel1.add(okBtn);
+        okBtn.setBounds(75,80, 100, 25);
+        
+        okBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                if(okBtn.getActionCommand().equals("OK")) {
+                    int total = 996;
+                    int cash = Integer.parseInt(cash_num.getText());
+                    int sukli = cash - total;
+                    JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
+                    setVisible(false);
                 }
             }
         });

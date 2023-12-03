@@ -2,6 +2,7 @@ package staff;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.regex.*;
 import javax.swing.*;
 
 public class MovieDescription extends JFrame implements ActionListener {
@@ -29,7 +30,7 @@ public class MovieDescription extends JFrame implements ActionListener {
     JTextField jtf = new JTextField(2);
     ImageIcon sicon = new ImageIcon("seat.png");
     JRadioButton jr = new JRadioButton();
-    public int ctr =7;
+    public int ctr;
     
     public void Moviedes() {
         setVisible(true);
@@ -265,19 +266,41 @@ public class MovieDescription extends JFrame implements ActionListener {
             time2.setBackground(Color.WHITE);
             time1.setBackground(null);
         }
-        if(e.getSource()== conf){
+       
+        AbstractButton src = (AbstractButton)e.getSource();
+        String lm = src.getText();
+      if (containsNumber(lm)&& !(csc(lm))&& !(src.getBackground()== Color.CYAN)) {
+            this.ctr++;
+            src.setBackground(Color.cyan);
+        }
+      else if(src.getBackground()== Color.CYAN){
+          src.setBackground(Color.WHITE);
+          this.ctr--;
+      }
+      if(e.getSource()== conf){
             String sctr = Integer.toString(ctr);
             jtf.setText(sctr);
             stf.setter();
-            dispose();
+            int input = JOptionPane.showOptionDialog(null, "Total Tickets "+ ctr, "Order Confirmation", 
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+            if(input == JOptionPane.OK_OPTION){
+                stf.ctg = this.ctr;
+                setVisible(false);
+            }
+            else if (input == JOptionPane.CANCEL_OPTION){
+                this.ctr =0;
+            }
         }
-        
-//        JRadioButton src = (JRadioButton) e.getSource();
-//        if (e.getSource() == src) {
-//            ctr++;
-//            src.setBackground(Color.cyan);
-//        }
 
+    }
+    public static boolean containsNumber(String buttonText) {
+        return buttonText.matches(".*\\d+.*");
+    }
+    public static boolean csc(String buttonText) {
+        // Regular expression to check if the button text contains any special character
+        Pattern specialCharacterPattern = Pattern.compile("[^a-zA-Z0-9]");
+        Matcher matcher = specialCharacterPattern.matcher(buttonText);
+        return matcher.find();
     }
         
 

@@ -158,6 +158,7 @@ public class Staff extends JFrame implements ActionListener{
         JLabel stno = new JLabel("0");
         final JPanel tlist = new JPanel();
         JButton get = new JButton();
+         int ctg;
         
     public void ticklist() {
        
@@ -211,8 +212,8 @@ public class Staff extends JFrame implements ActionListener{
                 if(ae.getSource()== shw) {
                 int i =1;
                 //ticklist();
-                receipt();
-                while(i<=md.ctr){
+                //receipt();
+                while(i<=ctg){
                     String newn = Integer.toString(i);
                     stno.setText(newn);
                     inticlist(stno);
@@ -237,6 +238,7 @@ public class Staff extends JFrame implements ActionListener{
                 if(ctn.getActionCommand().equals("CONTINUE")) {
                     Payment p = new Payment();
                     p.paymentMethod();
+                    receipt();
                 }
             }
         });

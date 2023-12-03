@@ -4,6 +4,12 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class Staff extends JFrame implements ActionListener{
+        
+        //declaration para sa ticket list
+        JLabel stno = new JLabel("0");
+        JPanel tlist = new JPanel();
+        public static int ctg=0;
+        
     public void mainframe() {
         setSize(900, 680);
         setResizable(false);
@@ -153,12 +159,9 @@ public class Staff extends JFrame implements ActionListener{
         });
     }
     
-        //declaration para sa ticket list
-        JLabel stno = new JLabel("0");
-        JLabel id = new JLabel("1");
-        final JPanel tlist = new JPanel();
-        JButton get = new JButton();
-        
+    public void pc(){
+        System.out.println(ctg);
+    }
     public void ticklist() {
        
         JPanel middle = new JPanel();
@@ -203,25 +206,19 @@ public class Staff extends JFrame implements ActionListener{
         footer.add(shw);
         footer.add(clr);
         footer.add(ctn);
-        MovieDescription md = new MovieDescription();
         
         shw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getSource()== shw) {
                 int i =1;
-                //ticklist();
-                receipt();
-                while(i<=md.ctr){
+                pc();
+                while(i<=ctg){
                     String newn = Integer.toString(i);
-                    String num = Integer.toString(i);
                     stno.setText(newn);
-                    id.setText(num);
-                    inticlist(stno,id);
-                    prntrct();
+                    inticlist(stno);
                     i++;
                     stno = new JLabel();
-                    id = new JLabel();
                 }
                 }
             }
@@ -240,15 +237,21 @@ public class Staff extends JFrame implements ActionListener{
                 if(ctn.getActionCommand().equals("CONTINUE")) {
                     Payment p = new Payment();
                     p.paymentMethod();
+                    int i =1;
+                    receipt();
+                    while(i<=ctg){
+                        prntrct();
+                        i++;
+                    }
+                    
                 }
             }
         });
 
     }
     
-    public void inticlist(JLabel stno, JLabel id){
-        
-        JLabel tid = new JLabel("MV20230"+id.getText());
+    public void inticlist(JLabel stno){
+        JLabel tid = new JLabel("MV202301");
         JLabel mt = new JLabel("Parasite");
         JLabel sn = new JLabel("S"+stno.getText());
         JLabel am = new JLabel("249");
@@ -297,8 +300,7 @@ public class Staff extends JFrame implements ActionListener{
     public void setter(){
         Staff f = new Staff();
         f.ticklist();
-        //f.inticlist(stno);
-        f.inticlist(stno, id);
+        f.inticlist(stno);
     }
         JPanel right = new JPanel();
     public void receipt() {
@@ -347,12 +349,12 @@ public class Staff extends JFrame implements ActionListener{
         resibo.add(cashier);
         cashier.setBounds(10, 105, 100, 30);
         
-        JLabel mTitle = new JLabel("PARASITE");
+        JLabel mTitle = new JLabel("MOVIE:");
         resibo.add(mTitle);
         mTitle.setFont(new Font("Ariel",Font.BOLD,15));
         mTitle.setBounds(20, 145, 200, 30);
         
-        JLabel seat = new JLabel("S"+stno.getText());
+        JLabel seat = new JLabel("SEAT#");
         resibo.add(seat);
         seat.setFont(new Font("Ariel",Font.BOLD,15));
         seat.setBounds(190, 145, 200, 30);
@@ -365,29 +367,25 @@ public class Staff extends JFrame implements ActionListener{
         square.setSize(new Dimension(220,120));
         square.setBounds(20, 170, 220, 120);
         
-        JLabel price = new JLabel("PRICE:");
+        JLabel price = new JLabel("PRICE");
         square.add(price);
-        price.setBounds(5, 25, 100, 30);
+        price.setBounds(5, 5, 100, 30);
         
-        JLabel prc = new JLabel("₱ "+"249");
-        square.add(prc);
-        prc.setBounds(140, 25, 100, 30);
-        
-        JLabel ticket = new JLabel("TICKET ID:");
+        JLabel ticket = new JLabel("TICKET NO.");
         square.add(ticket);
-        ticket.setBounds(5, 45, 100, 30);
+        ticket.setBounds(5, 25, 100, 30);
         
-        JLabel tix = new JLabel("MV20230"+id.getText());
-        square.add(tix);
-        tix.setBounds(140, 45, 100, 30);
+        JLabel tax1 = new JLabel("TAX");
+        square.add(tax1);
+        tax1.setBounds(5, 45, 100, 30);
         
-        JLabel total = new JLabel("TOTAL:");
+        JLabel tax2 = new JLabel("TAX ULET");
+        square.add(tax2);
+        tax2.setBounds(5, 65, 100, 30);
+        
+        JLabel total = new JLabel("TOTAL");
         square.add(total);
-        total.setBounds(5, 65, 100, 30);
-        
-        JLabel ttl = new JLabel("₱ "+"249");
-        square.add(ttl);
-        ttl.setBounds(140, 65, 100, 30);
+        total.setBounds(5, 85, 100, 30);
         
         JLabel reserve = new JLabel("RESERVE SEATING");
         resibo.add(reserve);

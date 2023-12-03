@@ -23,14 +23,14 @@ public class MovieDescription extends JFrame implements ActionListener {
     JButton backBtn = new JButton("Back");
     JButton time1 = new JButton();
     JButton time2 = new JButton();
-    final Staff stf= new Staff();
+    Staff stf= new Staff();
     JButton conf = new JButton("Proceed to payment");
     JButton st = new JButton();
     ButtonGroup bg1 = new ButtonGroup();
     JTextField jtf = new JTextField(2);
     ImageIcon sicon = new ImageIcon("seat.png");
     JRadioButton jr = new JRadioButton();
-    public int ctr;
+    public int ctr=0;
     
     public void Moviedes() {
         setVisible(true);
@@ -280,7 +280,6 @@ public class MovieDescription extends JFrame implements ActionListener {
       if(e.getSource()== conf){
             String sctr = Integer.toString(ctr);
             jtf.setText(sctr);
-            stf.setter();
             int input = JOptionPane.showOptionDialog(null, "Total Tickets "+ ctr, "Order Confirmation", 
                     JOptionPane.OK_CANCEL_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
             if(input == JOptionPane.OK_OPTION){
@@ -288,7 +287,7 @@ public class MovieDescription extends JFrame implements ActionListener {
                 setVisible(false);
             }
             else if (input == JOptionPane.CANCEL_OPTION){
-                this.ctr =0;
+                
             }
         }
 

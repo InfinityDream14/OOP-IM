@@ -42,7 +42,7 @@ public class Payment extends JFrame {
         tAmount.setBounds(30, 130, 200, 30);
         
         JLabel t_Amount = new JLabel();
-        t_Amount.setText("" + tot);
+        t_Amount.setText("₱ "+ tot);
         panel1.add(t_Amount);
         t_Amount.setFont(new Font("Courier",Font.BOLD,15));
         t_Amount.setBounds(160, 130, 200, 30);
@@ -85,7 +85,7 @@ public class Payment extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (card.getActionCommand().equals("CARD")) {
                     Payment p = new Payment();
-                    p.card();
+                    p.card(tot);
                 }
             }
         });
@@ -95,7 +95,7 @@ public class Payment extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (gCash.getActionCommand().equals("GCASH")) {
                     Payment p = new Payment();
-                    p.gCash();
+                    p.gCash(tot);
                 }
             }
         });
@@ -105,7 +105,7 @@ public class Payment extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 if (cash.getActionCommand().equals("CASH")) {
                     Payment p = new Payment();
-                    p.cash();
+                    p.cash(tot);
                 }
             }
         });
@@ -114,7 +114,7 @@ public class Payment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (finish.getActionCommand().equals("FINISH")) {
-                    System.exit(0);
+                    setVisible(false);
                 }
             }
         });
@@ -129,7 +129,7 @@ public class Payment extends JFrame {
         setLocationRelativeTo(null);
     }
     
-    public void card() {
+    public void card(String tot) {
         setVisible(true);
         setTitle("Payment Method");
         setSize(300, 200);
@@ -170,9 +170,8 @@ public class Payment extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 if(okBtn.getActionCommand().equals("OK") && card_num.getText().equals(bdo_num)) {
                     String sc = (String) card_type.getSelectedItem();
-                    int total = 1743;
                     int balance = 5000;
-                    int sukli = balance - total;
+                    int sukli = balance - Integer.parseInt(tot);
                     JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
                     setVisible(false);
                 }
@@ -180,7 +179,7 @@ public class Payment extends JFrame {
         });
     }
     
-    public void gCash() {
+    public void gCash(String tot) {
         setVisible(true);
         setTitle("Payment Method");
         setSize(300, 200);
@@ -220,9 +219,8 @@ public class Payment extends JFrame {
             public void actionPerformed(ActionEvent ae) {
                 if(okBtn.getActionCommand().equals("OK") && wallet_num.getText().equals(gcash_num)) {
                     String sc = (String) wallet_type.getSelectedItem();
-                    int total = 1743;
                     int balance = 5000;
-                    int sukli = balance - total;
+                    int sukli = balance - Integer.parseInt(tot);
                     JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
                     setVisible(false);
                 }
@@ -230,7 +228,7 @@ public class Payment extends JFrame {
         });
     }
     
-    public void cash() {
+    public void cash(String tot) {
         setVisible(true);
         setTitle("Payment Method");
         setSize(300, 200);
@@ -260,9 +258,9 @@ public class Payment extends JFrame {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(okBtn.getActionCommand().equals("OK")) {
-                    int total = 1743;
+                    
                     int cash = Integer.parseInt(cash_num.getText());
-                    int sukli = cash - total;
+                    int sukli = cash - Integer.parseInt(tot);
                     JOptionPane.showMessageDialog(null, "Successfull, your change is " + sukli, "Payment Success", JOptionPane.INFORMATION_MESSAGE);
                     setVisible(false);
                 }

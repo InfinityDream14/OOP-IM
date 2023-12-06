@@ -2,6 +2,7 @@ package staff;
 import front.Login;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.*;
 
 public class Staff extends JFrame implements ActionListener{
@@ -13,6 +14,7 @@ public class Staff extends JFrame implements ActionListener{
         JLabel tle = new JLabel();
         public static int ctg=0;
         public static int price=249;
+        public static ArrayList<String> sitno = new ArrayList<String>();
         public String tot;
         public int total=0;
         
@@ -224,16 +226,18 @@ public class Staff extends JFrame implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getSource()== shw) {
-                int i =1;
+                int i =1,y=0;
                 pc();
                 while(i<=ctg){
-                    String newn = Integer.toString(i);
+                    //String newn = Integer.toString(i);
                     String num = Integer.toString(i);
-                    stno.setText(newn);
+                    stno.setText(sitno.get(y));
                     id.setText(num);
                     inticlist(stno,id,tle);
                     i++;
+                    y++;
                     stno = new JLabel();
+                    id = new JLabel();
                     total += price;
                     tot = Integer.toString(total);
                 }
@@ -246,6 +250,7 @@ public class Staff extends JFrame implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getSource()== clr) {
+                    tlist.removeAll();
                 }
             }
         });
@@ -255,13 +260,14 @@ public class Staff extends JFrame implements ActionListener{
                 if(ctn.getActionCommand().equals("CONTINUE")) {
                     Payment p = new Payment();
                     p.paymentMethod(tot);
-                    int i =1;
+                    int i =1, y = 0;
                     receipt();
                     while(i<=ctg){
                         String newn = Integer.toString(i);
                         stno.setText(newn);
                         prntrct();
                         i++;
+                        y++;
                         stno = new JLabel();
                     }
                     
@@ -312,9 +318,9 @@ public class Staff extends JFrame implements ActionListener{
         numtl.setBackground(Color.BLACK);
         numtl.setPreferredSize(new Dimension(89, 100));
         numtl.setBounds(10, 10, 89, 89);
-        stno.setFont(new Font("Ariel",Font.BOLD,80));
-        stno.setForeground(Color.WHITE);
-        numtl.add(stno);
+        id.setFont(new Font("Ariel",Font.BOLD,80));
+        id.setForeground(Color.WHITE);
+        numtl.add(id);
         
     }
     

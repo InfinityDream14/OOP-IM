@@ -6,6 +6,7 @@ import java.util.regex.*;
 import javax.swing.*;
 
 public class MovieDescription extends JFrame implements ActionListener {
+    
     JPanel panel1 = new JPanel();
     JPanel panel2 = new JPanel();
     JPanel panel3 = new JPanel();
@@ -110,6 +111,7 @@ public class MovieDescription extends JFrame implements ActionListener {
         
         conf.addActionListener(this);
     }
+    
     public void seatarr(){
         FlowLayout f = new FlowLayout(FlowLayout.LEFT);
         JPanel sofb =new JPanel();
@@ -143,22 +145,6 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel2.add(movie1);
         movie1.setBounds(30, 0, 220, 360);
         
-        JLabel t1 = new JLabel("Parasite");
-        panel2.add(t1);
-        t1.setBounds(140, 330, 200, 30);
-        
-        JLabel dir1 = new JLabel("Bong Joon-ho");
-        panel2.add(dir1);
-        dir1.setBounds(140, 360, 200, 30);
-        
-        JLabel dur1 = new JLabel("2:12:00");
-        panel2.add(dur1);
-        dur1.setBounds(140, 390, 200, 30);
-        
-        JLabel g1 = new JLabel("Thriller");
-        panel2.add(g1);
-        g1.setBounds(140, 420, 200, 30);
-        
         panel2.add(backBtn);
         backBtn.setBounds(100, 460, 80, 25);
         
@@ -177,22 +163,6 @@ public class MovieDescription extends JFrame implements ActionListener {
         JLabel movie2 = new JLabel(p2);
         panel2.add(movie2);
         movie2.setBounds(30, 0, 220, 360);
-        
-        JLabel t2 = new JLabel("Taxi Driver");
-        panel2.add(t2);
-        t2.setBounds(140, 330, 200, 30);
-        
-        JLabel dir2 = new JLabel("Martin Scorses");
-        panel2.add(dir2);
-        dir2.setBounds(140, 360, 200, 30);
-        
-        JLabel dur2 = new JLabel("1:54:00");
-        panel2.add(dur2);
-        dur2.setBounds(140, 390, 200, 30);
-        
-        JLabel g2 = new JLabel("Neo-noir");
-        panel2.add(g2);
-        g2.setBounds(140, 420, 200, 30);
         
         panel2.add(backBtn);
         backBtn.setBounds(100, 460, 80, 25);
@@ -213,22 +183,6 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel2.add(movie3);
         movie3.setBounds(30, 0, 220, 360);
         
-        JLabel t3 = new JLabel("Seven");
-        panel2.add(t3);
-        t3.setBounds(140, 330, 200, 30);
-        
-        JLabel dir3 = new JLabel("David Fincher");
-        panel2.add(dir3);
-        dir3.setBounds(140, 360, 200, 30);
-        
-        JLabel dur3 = new JLabel("2:07:00");
-        panel2.add(dur3);
-        dur3.setBounds(140, 390, 200, 30);
-        
-        JLabel g3 = new JLabel("Crime");
-        panel2.add(g3);
-        g3.setBounds(140, 420, 200, 30);
-        
         panel2.add(backBtn);
         backBtn.setBounds(100, 460, 80, 25);
         
@@ -247,22 +201,6 @@ public class MovieDescription extends JFrame implements ActionListener {
         JLabel movie4 = new JLabel(p4);
         panel2.add(movie4);
         movie4.setBounds(30, 0, 220, 360);
-        
-        JLabel t4 = new JLabel("Nope");
-        panel2.add(t4);
-        t4.setBounds(140, 330, 200, 30);
-        
-        JLabel dir4 = new JLabel("Jordan Peele");
-        panel2.add(dir4);
-        dir4.setBounds(140, 360, 200, 30);
-        
-        JLabel dur4 = new JLabel("2:10:00");
-        panel2.add(dur4);
-        dur4.setBounds(140, 390, 200, 30);
-        
-        JLabel g4 = new JLabel("Horror");
-        panel2.add(g4);
-        g4.setBounds(140, 420, 200, 30);
         
         panel2.add(backBtn);
         backBtn.setBounds(100, 460, 80, 25);
@@ -283,22 +221,6 @@ public class MovieDescription extends JFrame implements ActionListener {
         panel2.add(movie5);
         movie5.setBounds(30, 0, 220, 360);
         
-        JLabel t5 = new JLabel("Memento");
-        panel2.add(t5);
-        t5.setBounds(140, 330, 200, 30);
-        
-        JLabel dir5 = new JLabel("Christopher Nolan");
-        panel2.add(dir5);
-        dir5.setBounds(140, 360, 200, 30);
-        
-        JLabel dur5 = new JLabel("1:53:00");
-        panel2.add(dur5);
-        dur5.setBounds(140, 390, 200, 30);
-        
-        JLabel g5 = new JLabel("Mystery");
-        panel2.add(g5);
-        g5.setBounds(140, 420, 200, 30);
-        
         panel2.add(backBtn);
         backBtn.setBounds(100, 460, 80, 25);
         
@@ -317,20 +239,6 @@ public class MovieDescription extends JFrame implements ActionListener {
         JLabel movie6 = new JLabel(p6);
         panel2.add(movie6);
         movie6.setBounds(30, 0, 220, 360);
-        
-        JLabel t6 = new JLabel("Home Alone");
-        panel2.add(t6);
-        t6.setBounds(140, 330, 200, 30);
-        
-        JLabel dir6 = new JLabel("Chris Columbus");
-        panel2.add(dir6);
-        dir6.setBounds(140, 360, 200, 30);
-        
-        JLabel dur6 = new JLabel("1:43:00");
-        panel2.add(dur6);
-        dur6.setBounds(140, 390, 200, 30);
-        
-        JLabel g6 = new JLabel("Comedy");
         
         panel2.add(backBtn);
         backBtn.setBounds(100, 460, 80, 25);
@@ -363,6 +271,7 @@ public class MovieDescription extends JFrame implements ActionListener {
         String lm = src.getText();
       if (containsNumber(lm)&& !(csc(lm))&& !(src.getBackground()== Color.CYAN)) {
             this.ctr++;
+            stf.sitno.add(lm);
             src.setBackground(Color.cyan);
         }
       else if(src.getBackground()== Color.CYAN){

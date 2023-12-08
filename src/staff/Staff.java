@@ -1,5 +1,5 @@
 package staff;
-import front.Login;
+///import front.Login;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -167,16 +167,13 @@ public class Staff extends JFrame implements ActionListener{
             public void actionPerformed(ActionEvent ae) {
                 if(logOut.getActionCommand().equals("Logout")) {
                     JOptionPane.showMessageDialog(null, "You have logged out successfully", "Logout", JOptionPane.YES_OPTION);
-                    Login l = new Login();
+                    //Login l = new Login();
                     dispose();
                 }
             }
         });
     }
     
-    public void pc(){
-        System.out.println(ctg);
-    }
     public void ticklist() {
        
         JPanel middle = new JPanel();
@@ -225,9 +222,8 @@ public class Staff extends JFrame implements ActionListener{
         shw.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(ae.getSource()== shw) {
+                if(ae.getSource()== shw && !(sitno.isEmpty())) {
                 int i =1,y=0;
-                pc();
                 while(i<=ctg){
                     //String newn = Integer.toString(i);
                     String num = Integer.toString(i);
@@ -241,8 +237,9 @@ public class Staff extends JFrame implements ActionListener{
                     total += price;
                     tot = Integer.toString(total);
                 }
-                System.out.println(tot);
                 }
+                else
+                    JOptionPane.showMessageDialog(null, "The list is empty", "System Notice", JOptionPane.INFORMATION_MESSAGE);
             }
         });
         
@@ -251,13 +248,15 @@ public class Staff extends JFrame implements ActionListener{
             public void actionPerformed(ActionEvent ae) {
                 if(ae.getSource()== clr) {
                     tlist.removeAll();
+                    tlist.repaint();
+                    sitno.removeAll(sitno);
                 }
             }
         });
         ctn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                if(ctn.getActionCommand().equals("CONTINUE")) {
+                if(ctn.getActionCommand().equals("CONTINUE") && !(sitno.isEmpty())) {
                     Payment p = new Payment();
                     p.paymentMethod(tot);
                     int i =1, y = 0;
@@ -272,6 +271,8 @@ public class Staff extends JFrame implements ActionListener{
                     }
                     
                 }
+                else
+                    JOptionPane.showMessageDialog(null, "The list is empty", "System Notice", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
